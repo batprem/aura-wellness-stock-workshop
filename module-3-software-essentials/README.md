@@ -49,7 +49,7 @@ Habits behind that prompt: say who the user is and their one task; ask for the s
 
 ## Workshop — a simple data app
 
-Solo, in Claude Code: build a small app that shows a prepared dataset as a chart and a table and lets you edit rows. React frontend, Python API, SQLite database, one layer per prompt. Brief: [workshop/README.md](workshop/README.md). Prompts: [workshop/PROMPTS.md](workshop/PROMPTS.md). Dataset: [workshop/data/example-activity-log.csv](workshop/data/example-activity-log.csv) (example data).
+Solo, in Claude Code: build a small app that shows a prepared dataset as a chart and a table, with full CRUD (create, read, update, delete rows). React frontend, Python API, SQLite database, one layer per prompt. Brief: [workshop/README.md](workshop/README.md). Prompts: [workshop/PROMPTS.md](workshop/PROMPTS.md). Dataset: [workshop/data/example-activity-log.csv](workshop/data/example-activity-log.csv) (example data).
 
 ## Next
 

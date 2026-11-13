@@ -12,11 +12,11 @@ Copy one prompt at a time. Check the result before you send the next one. Adapt 
 
 ## 3. Python API
 
-> Backend only. Build a small Python API on top of the SQLite table. I need three endpoints: one that returns all rows, one that updates a single row by `id`, and one that returns summary numbers for a chart (total minutes per activity). No login, no delete. Explain your plan first, then build it, then show me how to test each endpoint.
+> Backend only. Build a small Python API on top of the SQLite table with full CRUD: list all rows, create a row, update a row by `id`, and delete a row by `id`. Add one more endpoint that returns summary numbers for a chart (total minutes per activity). No login. Explain your plan first, then build it, then show me how to test each endpoint.
 
 ## 4. React screen
 
-> Frontend only. Build one React page that follows `design.md`. Use its buttons and cards. Show a chart from the summary endpoint and a table of all rows from the read endpoint, with an edit action on each row that calls the update endpoint. After a save, refresh the chart. Show empty, loading, saved and error states. Keep only what this task needs, and list anything you left out.
+> Frontend only. Build one React page that follows `design.md`. Use its buttons and cards. Show a chart from the summary endpoint and a table of all rows from the list endpoint. Let me add a row, edit a row and delete a row through the API; ask me to confirm before a delete. After each change, refresh the chart. Show empty, loading, saved and error states. Keep only what this task needs, and list anything you left out.
 
 ## 5. One small change
 
