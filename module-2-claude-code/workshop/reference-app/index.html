@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal finance report — reference app</title>
+<style>
+  /* Tokens from ../../../module-3-software-essentials/examples/design.md */
+  :root { --paper:#F6F4EE; --ink:#1E3833; --muted:#55655F; --accent:#2C6E61; --card:#FCFBF8; --border:#D9DFDA; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:28px 24px 48px; }
+  header { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:20px; }
+  h1 { font-size:28px; margin:0; } h2 { font-size:17px; margin:0 0 12px; }
+  .tag { font-size:13px; color:var(--muted); }
+  label { font-size:14px; color:var(--muted); display:flex; flex-direction:column; gap:4px; }
+  select, input { font:inherit; padding:8px 10px; border:1px solid var(--border); border-radius:8px; background:var(--card); color:var(--ink); }
+  select:focus, input:focus, th button:focus { outline:2px solid var(--accent); outline-offset:1px; }
+  .grid { display:grid; gap:16px; }
+  .cards { grid-template-columns:repeat(4,1fr); margin-bottom:16px; }
+  .two { grid-template-columns:1fr 1fr; margin-bottom:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+  .kpi .label { font-size:14px; color:var(--muted); } .kpi .value { font-size:28px; font-weight:700; font-variant-numeric:tabular-nums; }
+  .kpi.accent { border-top:4px solid var(--accent); }
+  svg text { fill:var(--ink); font-size:13px; } svg .muted { fill:var(--muted); }
+  .legend { display:flex; gap:16px; font-size:13px; color:var(--muted); margin-top:6px; }
+  .sw { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+  th button { all:unset; cursor:pointer; font-weight:600; } td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  ol { margin:0; padding-left:20px; } ol li { display:flex; justify-content:space-between; gap:12px; padding:4px 0; border-bottom:1px solid var(--border); }
+  .empty { color:var(--muted); padding:12px 0; }
+  .tools { display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-bottom:8px; }
+  @media (max-width:820px){ .cards{grid-template-columns:1fr 1fr;} .two{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>Personal finance report</h1><div class="tag">Example data · reference app for the Module 2 workshop</div></div>
+    <label>Month <select id="month"></select></label>
+  </header>
+
+  <section class="grid cards" aria-label="Summary">
+    <div class="card kpi"><div class="label">Money in</div><div class="value" id="k-in"></div></div>
+    <div class="card kpi"><div class="label">Money out</div><div class="value" id="k-out"></div></div>
+    <div class="card kpi accent"><div class="label">What’s left</div><div class="value" id="k-left"></div></div>
+    <div class="card kpi"><div class="label">Savings rate</div><div class="value" id="k-rate"></div></div>
+  </section>
+
+  <section class="grid two">
+    <div class="card"><h2>Spending by category</h2><div id="cat"></div></div>
+    <div class="card"><h2>Money in vs out, by month</h2><div id="trend"></div>
+      <div class="legend"><span><i class="sw" style="background:var(--accent)"></i>Money in</span><span><i class="sw" style="background:var(--muted)"></i>Money out</span></div></div>
+  </section>
+
+  <section class="grid two">
+    <div class="card"><h2>Top 5 biggest expenses</h2><ol id="top"></ol></div>
+    <div class="card">
+      <div class="tools"><h2 style="margin:0">Transactions</h2><label>Search <input id="q" type="search" placeholder="Description or category"></label></div>
+      <table><thead><tr>
+        <th><button data-k="date">Date</button></th><th><button data-k="description">Description</button></th>
+        <th><button data-k="category">Category</button></th><th class="num"><button data-k="amount">Amount</button></th>
+      </tr></thead><tbody id="rows"></tbody></table>
+    </div>
+  </section>
+</main>
+<script id="data" type="text/csv">
+date,description,category,amount,type
+2026-01-01,Monthly salary,Income,45000,in
+2026-01-01,Rent,Housing,12000,out
+2026-01-03,Supermarket,Groceries,1380,out
+2026-01-03,Train fare top-up,Transport,400,out
+2026-01-04,Supermarket,Groceries,1740,out
+2026-01-04,Train fare top-up,Transport,850,out
+2026-01-05,Electricity bill,Bills,1280,out
+2026-01-05,Internet,Bills,590,out
+2026-01-05,Dinner out,Eating out,860,out
+2026-01-06,Fresh market,Groceries,540,out
+2026-01-06,Coffee shop,Eating out,280,out
+2026-01-08,Streaming subscription,Bills,419,out
+2026-01-09,Fuel,Transport,180,out
+2026-01-10,Gym membership,Health,1200,out
+2026-01-14,Supermarket,Groceries,1560,out
+2026-01-15,Taxi,Transport,170,out
+2026-01-15,Coffee shop,Eating out,620,out
+2026-01-19,Taxi,Transport,490,out
+2026-01-19,Lunch with friends,Eating out,850,out
+2026-01-22,Grocery delivery,Groceries,620,out
+2026-01-25,Clinic visit,Health,850,out
+2026-02-01,Monthly salary,Income,45000,in
+2026-02-01,Rent,Housing,12000,out
+2026-02-03,Grocery delivery,Groceries,1810,out
+2026-02-04,Grocery delivery,Groceries,1250,out
+2026-02-04,Bus pass,Transport,790,out
+2026-02-05,Electricity bill,Bills,1340,out
+2026-02-05,Internet,Bills,590,out
+2026-02-06,Food delivery,Eating out,200,out
+2026-02-08,Streaming subscription,Bills,419,out
+2026-02-08,Grocery delivery,Groceries,1610,out
+2026-02-09,Fuel,Transport,550,out
+2026-02-10,Gym membership,Health,1200,out
+2026-02-12,Lunch with friends,Eating out,1120,out
+2026-02-14,Concert tickets,Other,2400,out
+2026-02-17,Dinner out,Eating out,580,out
+2026-02-20,Freelance project,Income,6500,in
+2026-02-20,Supermarket,Groceries,1210,out
+2026-02-20,Fuel,Transport,480,out
+2026-02-21,Fresh market,Groceries,910,out
+2026-02-24,Train fare top-up,Transport,270,out
+2026-02-26,Fuel,Transport,330,out
+2026-02-26,Dinner out,Eating out,910,out
+2026-03-01,Monthly salary,Income,45000,in
+2026-03-01,Rent,Housing,12000,out
+2026-03-04,Grocery delivery,Groceries,610,out
+2026-03-05,Electricity bill,Bills,1280,out
+2026-03-05,Internet,Bills,590,out
+2026-03-05,Train fare top-up,Transport,390,out
+2026-03-07,Bus pass,Transport,280,out
+2026-03-08,Streaming subscription,Bills,419,out
+2026-03-10,Gym membership,Health,1200,out
+2026-03-10,Supermarket,Groceries,1240,out
+2026-03-10,Coffee shop,Eating out,1190,out
+2026-03-13,Taxi,Transport,620,out
+2026-03-14,Food delivery,Eating out,1250,out
+2026-03-16,Grocery delivery,Groceries,1170,out
+2026-03-16,Dinner out,Eating out,1050,out
+2026-03-17,Fuel,Transport,750,out
+2026-03-18,Laptop repair,Other,14500,out
+2026-03-19,Food delivery,Eating out,600,out
+2026-03-20,Grocery delivery,Groceries,1330,out
+2026-03-21,Train fare top-up,Transport,330,out
+2026-03-22,Pharmacy,Health,380,out
+2026-03-27,Supermarket,Groceries,1630,out
+</script>
+<script>
+const rows = document.getElementById('data').textContent.trim().split('\n').slice(1).map(l => {
+  const [date, description, category, amount, type] = l.split(',');
+  return { date, description, category, amount: Number(amount), type };
+});
+const fmt = n => n.toLocaleString('en-US');
+const months = [...new Set(rows.map(r => r.date.slice(0, 7)))].sort();
+const monthName = m => new Date(m + '-01T00:00:00').toLocaleString('en-US', { month: 'short', year: 'numeric' });
+const sel = document.getElementById('month');
+sel.innerHTML = months.map(m => `<option value="${m}">${monthName(m)}</option>`).join('');
+sel.value = months[months.length - 1];
+let sortKey = 'date', sortDir = -1;
+
+function render() {
+  const m = sel.value, mr = rows.filter(r => r.date.startsWith(m));
+  const sum = t => mr.filter(r => r.type === t).reduce((a, r) => a + r.amount, 0);
+  const inn = sum('in'), out = sum('out'), left = inn - out;
+  document.getElementById('k-in').textContent = fmt(inn);
+  document.getElementById('k-out').textContent = fmt(out);
+  document.getElementById('k-left').textContent = fmt(left);
+  document.getElementById('k-rate').textContent = inn ? Math.round(left / inn * 100) + '%' : '—';
+
+  // spending by category: horizontal bars
+  const byCat = {}; mr.filter(r => r.type === 'out').forEach(r => byCat[r.category] = (byCat[r.category] || 0) + r.amount);
+  const cats = Object.entries(byCat).sort((a, b) => b[1] - a[1]), max = Math.max(...cats.map(c => c[1]), 1);
+  const bh = 26, W = 520;
+  document.getElementById('cat').innerHTML = cats.length ? `<svg viewBox="0 0 ${W} ${cats.length * bh + 4}" width="100%" role="img" aria-label="Spending by category">${
+    cats.map(([c, v], i) => `<text x="0" y="${i * bh + 17}">${c}</text><rect x="110" y="${i * bh + 4}" width="${(W - 200) * v / max}" height="18" rx="4" fill="#2C6E61"/><text class="muted" x="${116 + (W - 200) * v / max}" y="${i * bh + 17}">${fmt(v)}</text>`).join('')}</svg>` : '<div class="empty">No spending this month.</div>';
+
+  // trend: grouped bars per month, selected month highlighted
+  const H = 190, tw = 520, gw = tw / months.length, tmax = Math.max(...months.map(mm => Math.max(...['in', 'out'].map(t => rows.filter(r => r.date.startsWith(mm) && r.type === t).reduce((a, r) => a + r.amount, 0)))));
+  document.getElementById('trend').innerHTML = `<svg viewBox="0 0 ${tw} ${H + 30}" width="100%" role="img" aria-label="Money in vs out by month">${months.map((mm, i) => {
+    const v = t => rows.filter(r => r.date.startsWith(mm) && r.type === t).reduce((a, r) => a + r.amount, 0);
+    const x = i * gw + gw / 2, hi = H * v('in') / tmax, ho = H * v('out') / tmax, op = mm === m ? 1 : .45;
+    return `<rect x="${x - 34}" y="${H - hi}" width="30" height="${hi}" rx="4" fill="#2C6E61" opacity="${op}"/><rect x="${x + 4}" y="${H - ho}" width="30" height="${ho}" rx="4" fill="#55655F" opacity="${op}"/><text x="${x}" y="${H + 20}" text-anchor="middle" font-weight="${mm === m ? 700 : 400}">${monthName(mm)}</text>`;
+  }).join('')}</svg>`;
+
+  // top 5 expenses
+  const top = mr.filter(r => r.type === 'out').sort((a, b) => b.amount - a.amount).slice(0, 5);
+  document.getElementById('top').innerHTML = top.map(r => `<li><span>${r.description} <span class="tag">· ${r.category}</span></span><b>${fmt(r.amount)}</b></li>`).join('') || '<div class="empty">No expenses.</div>';
+
+  // table: search + sort
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const list = mr.filter(r => !q || (r.description + ' ' + r.category).toLowerCase().includes(q))
+    .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : a[sortKey] < b[sortKey] ? -1 : 0) * sortDir);
+  document.getElementById('rows').innerHTML = list.map(r => `<tr><td>${r.date}</td><td>${r.description}</td><td>${r.category}</td><td class="num">${r.type === 'out' ? '−' : '+'}${fmt(r.amount)}</td></tr>`).join('')
+    || '<tr><td colspan="4" class="empty">No transactions match.</td></tr>';
+}
+sel.addEventListener('change', render);
+document.getElementById('q').addEventListener('input', render);
+document.querySelectorAll('th button').forEach(b => b.addEventListener('click', () => {
+  sortDir = sortKey === b.dataset.k ? -sortDir : 1; sortKey = b.dataset.k; render();
+}));
+render();
+</script>
+</body>
+</html>

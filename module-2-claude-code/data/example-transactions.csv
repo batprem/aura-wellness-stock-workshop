@@ -1,0 +1,66 @@
+date,description,category,amount,type
+2026-01-01,Monthly salary,Income,45000,in
+2026-01-01,Rent,Housing,12000,out
+2026-01-03,Supermarket,Groceries,1380,out
+2026-01-03,Train fare top-up,Transport,400,out
+2026-01-04,Supermarket,Groceries,1740,out
+2026-01-04,Train fare top-up,Transport,850,out
+2026-01-05,Electricity bill,Bills,1280,out
+2026-01-05,Internet,Bills,590,out
+2026-01-05,Dinner out,Eating out,860,out
+2026-01-06,Fresh market,Groceries,540,out
+2026-01-06,Coffee shop,Eating out,280,out
+2026-01-08,Streaming subscription,Bills,419,out
+2026-01-09,Fuel,Transport,180,out
+2026-01-10,Gym membership,Health,1200,out
+2026-01-14,Supermarket,Groceries,1560,out
+2026-01-15,Taxi,Transport,170,out
+2026-01-15,Coffee shop,Eating out,620,out
+2026-01-19,Taxi,Transport,490,out
+2026-01-19,Lunch with friends,Eating out,850,out
+2026-01-22,Grocery delivery,Groceries,620,out
+2026-01-25,Clinic visit,Health,850,out
+2026-02-01,Monthly salary,Income,45000,in
+2026-02-01,Rent,Housing,12000,out
+2026-02-03,Grocery delivery,Groceries,1810,out
+2026-02-04,Grocery delivery,Groceries,1250,out
+2026-02-04,Bus pass,Transport,790,out
+2026-02-05,Electricity bill,Bills,1340,out
+2026-02-05,Internet,Bills,590,out
+2026-02-06,Food delivery,Eating out,200,out
+2026-02-08,Streaming subscription,Bills,419,out
+2026-02-08,Grocery delivery,Groceries,1610,out
+2026-02-09,Fuel,Transport,550,out
+2026-02-10,Gym membership,Health,1200,out
+2026-02-12,Lunch with friends,Eating out,1120,out
+2026-02-14,Concert tickets,Other,2400,out
+2026-02-17,Dinner out,Eating out,580,out
+2026-02-20,Freelance project,Income,6500,in
+2026-02-20,Supermarket,Groceries,1210,out
+2026-02-20,Fuel,Transport,480,out
+2026-02-21,Fresh market,Groceries,910,out
+2026-02-24,Train fare top-up,Transport,270,out
+2026-02-26,Fuel,Transport,330,out
+2026-02-26,Dinner out,Eating out,910,out
+2026-03-01,Monthly salary,Income,45000,in
+2026-03-01,Rent,Housing,12000,out
+2026-03-04,Grocery delivery,Groceries,610,out
+2026-03-05,Electricity bill,Bills,1280,out
+2026-03-05,Internet,Bills,590,out
+2026-03-05,Train fare top-up,Transport,390,out
+2026-03-07,Bus pass,Transport,280,out
+2026-03-08,Streaming subscription,Bills,419,out
+2026-03-10,Gym membership,Health,1200,out
+2026-03-10,Supermarket,Groceries,1240,out
+2026-03-10,Coffee shop,Eating out,1190,out
+2026-03-13,Taxi,Transport,620,out
+2026-03-14,Food delivery,Eating out,1250,out
+2026-03-16,Grocery delivery,Groceries,1170,out
+2026-03-16,Dinner out,Eating out,1050,out
+2026-03-17,Fuel,Transport,750,out
+2026-03-18,Laptop repair,Other,14500,out
+2026-03-19,Food delivery,Eating out,600,out
+2026-03-20,Grocery delivery,Groceries,1330,out
+2026-03-21,Train fare top-up,Transport,330,out
+2026-03-22,Pharmacy,Health,380,out
+2026-03-27,Supermarket,Groceries,1630,out

@@ -1,51 +1,25 @@
-# Module 2 — Claude Code warm-up
+# Module 2 — Claude Code workshop
 
-Workshop materials for the Module 2 warm-up: **create a dashboard from data**, in Claude Code.
-
-> **Example data only — not real Aura data.** The file in `data/` is invented for the classroom.
+Workshop materials for Module 2: build a **personal finance report app** in Claude Code — one page in the browser, no server, no login, no database.
 
 Slide deck: [Module 2 — Claude Code](https://claude.ai/artifact/1URWmLwRweaMHr89aijsne)
 
-Sample data file: [`data/example-dashboard.csv`](data/example-dashboard.csv)
+| Path | What it's for |
+|---|---|
+| [workshop/README.md](workshop/README.md) | The brief: core features, stretch options, steps, done checklist. |
+| [workshop/PROMPTS.md](workshop/PROMPTS.md) | Six prompts, in order. |
+| [data/example-transactions.csv](data/example-transactions.csv) | Example data: about three months of transactions. |
+| [workshop/reference-app/](workshop/reference-app/) | A reference app built from the example data, and its screenshot. |
+| [data/example-dashboard.csv](data/example-dashboard.csv) | Example data from the earlier dashboard warm-up, kept for reference. |
 
-## Scope — small on purpose
-
-One dataset, one page, a few charts. Nothing more today. No server, no login, no database. This is practice for working with the agent, not a production system. Frontend and backend thinking comes in Module 3.
-
-## Goal and what “done” looks like
-
-**Goal:** get the agent to turn the data into a dashboard, while you steer.
-
-**Done when:**
-
-- The page opens on your machine.
-- It shows the data in a few clear views.
-- You can explain what each view says.
-
-Pretty is a bonus. If you finish early, improve one view — do not add a new system.
-
-## Suggested steps
-
-1. Make a new folder and put `example-dashboard.csv` in it (copy it from this folder, or clone this repository).
-2. Open a terminal there and start Claude Code.
-3. Ask the agent to look at the data and describe it.
-4. Ask for a simple dashboard; let it plan, then read the plan.
-5. Let it build and run; open the result.
-6. Give one piece of feedback at a time until it is done.
-
-If git is installed, you may optionally commit after each working step. It is not required today.
-
-## Example prompt — not a required script
-
-This is a sample only. Write your own. It names the data, sets a small scope, and asks for a plan first.
-
-> Look at `example-dashboard.csv` and tell me what it contains. Then propose a simple one-page dashboard with three views. Keep it to a single page with no server or login. Show me the plan before you build.
+Use the example data in class, not your own bank data.
 
 ## Things to watch for
 
-- **Overbuilding:** servers, logins or databases for a one-page dashboard. Say “keep it small”.
+- **Overbuilding:** servers, logins or databases for a one-page report. Say "keep it small".
 - **Approving blind:** read the plan and the commands before you say yes.
 - **Too much at once:** one change per prompt is easier to check and undo.
+- **Check the totals by hand:** pick one month and add it up yourself.
 
 ## Optional tools
 
@@ -59,4 +33,4 @@ This folder does not invent an install command or a sign-in step — use the off
 
 ## Next
 
-Keep the dashboard folder; it can be a reference later in the day. Next is Module 3 — Software essentials: [module-3-software-essentials](../module-3-software-essentials/).
+Keep your finance app folder; Module 3 adds a backend and full CRUD on top of the same ideas. Next is Module 3 — Software essentials: [module-3-software-essentials](../module-3-software-essentials/).
