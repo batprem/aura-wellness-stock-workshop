@@ -21,7 +21,7 @@ Or [Download ZIP](https://github.com/batprem/aura-wellness-stock-workshop/archiv
 |---|---|---|---|
 | 1 — Basic AI Agent | 1h | [module-1-basic-ai-agent](module-1-basic-ai-agent/) — one-page reference: LLM + harness, the agent loop, habits | [Module 1](https://claude.ai/artifact/9aGQyVuaeMfwNXa8aCkx5U) |
 | 2 — Claude Code | 1h | [module-2-claude-code](module-2-claude-code/) — warm-up: create a dashboard from data, with [`example-dashboard.csv`](module-2-claude-code/data/example-dashboard.csv) | [Module 2](https://claude.ai/artifact/1URWmLwRweaMHr89aijsne) |
-| 3 — Software essentials | 1h | [module-3-software-essentials](module-3-software-essentials/) — layers, the way out of overengineering, an example [`design.md`](module-3-software-essentials/examples/design.md) and UX prompt | [Module 3](https://claude.ai/artifact/4VSsa5KJhmpscb2Dah1sLz) |
+| 3 — Software essentials | 1h | [module-3-software-essentials](module-3-software-essentials/) — layers, the way out of overengineering, an example [`design.md`](module-3-software-essentials/examples/design.md) and UX prompt, and a [workshop](module-3-software-essentials/workshop/README.md): a simple data app (React, Python API, SQLite) | [Module 3](https://claude.ai/artifact/4VSsa5KJhmpscb2Dah1sLz) |
 | 4 — Context management | 1h | [module-4-context-management](module-4-context-management/) — example `CLAUDE.md` and `SKILL.md` layouts, practice brief | [Module 4](https://claude.ai/artifact/NfTyabyBwmrACeMSfPuL2m) |
 | 5 — Stock management workshop | 2h | Brief, starter `CLAUDE.md`, changelog, prompts, and example stock and login data — paths below | [Module 5](https://claude.ai/artifact/HEQi7fGEx67Qoki6hmFZpr) |
 

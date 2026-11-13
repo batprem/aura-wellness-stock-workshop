@@ -47,6 +47,10 @@ The brackets are for you to fill in.
 
 Habits behind that prompt: say who the user is and their one task; ask for the simplest screen that does it; point to `design.md` so the design system is reused; ask for empty, loading and error states; and ask “What can we remove?”
 
+## Workshop — a simple data app
+
+Solo, in Claude Code: build a small app that shows a prepared dataset as a chart and a table and lets you edit rows. React frontend, Python API, SQLite database, one layer per prompt. Brief: [workshop/README.md](workshop/README.md). Prompts: [workshop/PROMPTS.md](workshop/PROMPTS.md). Dataset: [workshop/data/example-activity-log.csv](workshop/data/example-activity-log.csv) (example data).
+
 ## Next
 
 Module 4 — Context management: [module-4-context-management](../module-4-context-management/).
