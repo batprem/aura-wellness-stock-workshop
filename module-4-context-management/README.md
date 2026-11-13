@@ -1,6 +1,6 @@
 # Module 4 — Context management
 
-Materials for the fourth hour: example `CLAUDE.md` and `SKILL.md` layouts, and a short practice brief. These match the example layouts on the slides.
+Materials for the fourth hour: example `CLAUDE.md` and `SKILL.md` layouts, a short MCP reference, and a solo workshop. These match the example layouts on the slides.
 
 > **Example layouts only — not real Aura data** and not a required format.
 
@@ -12,7 +12,8 @@ Slide deck: [Module 4 — Context management](https://claude.ai/artifact/NfTyaby
 |---|---|
 | [examples/CLAUDE.md](examples/CLAUDE.md) | Example project briefing for the stock-check app (same layout as Module 4, slide 10). The \[threshold\] is still for the team to fill. |
 | [examples/SKILL.md](examples/SKILL.md) | Example skill: how to write a changelog entry (same layout as Module 4, slide 13). |
-| Practice, below | A short CLAUDE.md exercise before the Module 5 workshop. |
+| [examples/hello-world/SKILL.md](examples/hello-world/SKILL.md) | Example hello-world skill for the workshop. Copy it to `.claude/skills/hello-world/SKILL.md`. |
+| [workshop/README.md](workshop/README.md) | Solo workshop: skills, MCP (Notion) and plan mode. Prompts in [workshop/PROMPTS.md](workshop/PROMPTS.md). |
 
 The Module 5 starter `CLAUDE.md` and changelog you will actually edit live at the [repository root](../CLAUDE.md) and in [CHANGELOG.md](../CHANGELOG.md). Example stock and user data: [`../data/`](../data/).
 
@@ -23,17 +24,21 @@ The Module 5 starter `CLAUDE.md` and changelog you will actually edit live at th
 
 Example: CLAUDE.md says the MVP is login, stock tables and the red label. A skill describes how to write a changelog entry after each build. The *rule* “every build gets a changelog entry” belongs in CLAUDE.md; the *how-to* belongs in the skill.
 
-## Practice: a short CLAUDE.md
+## MCP — Model Context Protocol
 
-Write these parts, in pairs, on paper or in Claude Chat (no Claude Code needed yet). Short beats complete. Push for at least two “not now” items.
+MCP is an open standard for connecting agents such as Claude Code to outside tools and data — a database, GitHub, Notion. **If a resource is offered as an MCP server, any agent that speaks MCP can find it and use it — no custom wiring per agent.**
 
-- Purpose — one line
-- Scope — the MVP
-- Not now — what you will not build
-- Frontend / backend — who does what
-- Two or three team rules
+- **CLAUDE.md** — *what and why*: standing project instructions.
+- **SKILL.md** — *how*: a procedure for one kind of task.
+- **MCP** — *reach*: tools and data outside the project.
 
-**Project:** the stock app (login, read stock tables, red label for almost-empty items), or a familiar team project if the presenter offers one. Time is set in the room — this file does not set a clock time.
+What an MCP tool returns lands in the agent's context window, so connect only what the task needs: right context, not most context.
+
+In Claude Code a server can be added for you in one project (the default), for you in every project, or for the whole team through a `.mcp.json` file in the project. Official guide: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp).
+
+## Workshop
+
+Solo, in Claude Code: a hello-world skill by hand, a skill made with skill-creator, a third-party skill, Notion over MCP, and plan mode with an interview. Brief: [workshop/README.md](workshop/README.md).
 
 ## Preparing context for the workshop
 
