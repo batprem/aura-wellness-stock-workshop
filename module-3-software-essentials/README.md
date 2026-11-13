@@ -33,13 +33,19 @@ Keep frontend, backend and database **separate**. One layer per prompt. Build th
 
 Requirements documents (BRD, PRD, SRS) turn into sprint-sized work: **requirements → tasks → prompts → review**. Work in small sprints, not one giant build.
 
+## Design system: `design.md`
+
+A design system is a shared kit for the frontend: **tokens** (colors, fonts, spacing), **components** (buttons, cards, forms built once), and **rules** for using them. Write it once in a file such as [`examples/design.md`](examples/design.md), then point every UI prompt at that file so Claude reuses it instead of re-deciding the look each time.
+
+That file is an **example — not real Aura data**, and not Aura’s real product design. Teams may replace the tokens with their own.
+
 ## Example prompt for usable UX — not a real Aura request
 
 The brackets are for you to fill in.
 
-> Build one screen for a \[role\] to \[task\]. Frontend only — use mock data, no backend yet. Use our design system’s buttons and cards. Show empty, loading, and error states. Keep only what this task needs, and list anything you left out.
+> Build one screen for a \[role\] to \[task\]. Frontend only — use mock data, no backend yet. Follow `design.md`. Use its buttons and cards. Show empty, loading, and error states. Keep only what this task needs, and list anything you left out.
 
-Habits behind that prompt: say who the user is and their one task; ask for the simplest screen that does it; point to the design system to reuse; ask for empty, loading and error states; and ask “What can we remove?”
+Habits behind that prompt: say who the user is and their one task; ask for the simplest screen that does it; point to `design.md` so the design system is reused; ask for empty, loading and error states; and ask “What can we remove?”
 
 ## Next
 
