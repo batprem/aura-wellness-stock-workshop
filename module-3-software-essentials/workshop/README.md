@@ -48,10 +48,13 @@ Copy-paste prompts for each step are in [PROMPTS.md](PROMPTS.md).
 
 ## Done when
 
-- The table shows every row from the database, through the API.
-- You can add, edit and delete a row (with a confirm before delete), and the chart changes to match after each one.
-- You can point to which part is frontend, which is backend, and which is the database.
-- You have a "not now" list.
+- **Data:** the CSV sits in one SQLite table, with every row there.
+- **API:** lists, adds, changes and removes rows, and sends chart totals — tested first.
+- **Screen:** one page in the `design.md` style, with a chart and a table.
+- **Changes:** add, edit or remove a row (removing asks first), and the chart catches up.
+- **States:** clear messages for no data, waiting, saved, and something went wrong.
+- **Process:** one prompt per layer, one small extra of your own, and no login anywhere.
+- **Demo:** you can show it and name its frontend, backend and database parts.
 
 ## Links
 
